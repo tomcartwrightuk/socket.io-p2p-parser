@@ -1,8 +1,7 @@
 
-# socket.io-parser
+# socket.io-p2p-parser
 
-[![Build Status](https://secure.travis-ci.org/Automattic/socket.io-parser.svg)](http://travis-ci.org/Automattic/socket.io-parser)
-[![NPM version](https://badge.fury.io/js/socket.io-parser.svg)](http://badge.fury.io/js/socket.io-parser)
+This parser mainly concists of a fork of [socket.io-parser](https://github.com/Automattic/socket.io-parser) with some added logic for chunking binary data. This may or may not be appropriate to merge back but in the meantime it lives here for inclusion in [socket.io-p2p](https://github.com/tomcartwrightuk/socket.io-p2p).
 
 A socket.io encoder and decoder written in JavaScript complying with version `3`
 of [socket.io-protocol](https://github.com/learnboost/socket.io-protocol).

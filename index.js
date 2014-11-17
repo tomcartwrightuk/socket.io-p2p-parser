@@ -370,11 +370,16 @@ function BinaryReconstructor(packet) {
 BinaryReconstructor.prototype.takeBinaryData = function(binData) {
   this.buffers.push(binData);
   if (this.buffers.length == this.reconPack.attachments) { // done with buffer list
-    var packet = binary.reconstructPacket(this.reconPack, this.buffers);
+    this.reconPack.data['data'] = this.buffers.reduce(function(prev, curr, idx, arr) {
+      return this._appendBuffer(prev, curr);
+    })
+    binary.reconstructPacket(this.reconPack, [this.reconPack.data['data']]);
+    var packet = this.reconPack
     this.finishedReconstruction();
     return packet;
   }
   return null;
+
 };
 
 /**
@@ -394,3 +399,16 @@ function error(data){
     data: 'parser error'
   };
 }
+
+/**
+ * Reconstructs ArrayBuffer from chunks
+ *
+ * @api private
+ */
+
+BinaryReconstructor.prototype._appendBuffer = function(curr, prev) {
+  var tmp = new Uint8Array(curr.byteLength + prev.byteLength);
+  tmp.set(new Uint8Array(curr), 0);
+  tmp.set(new Uint8Array(prev), curr.byteLength);
+  return tmp.buffer;
+};
