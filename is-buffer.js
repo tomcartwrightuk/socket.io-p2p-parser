@@ -9,5 +9,6 @@ module.exports = isBuf;
 
 function isBuf(obj) {
   return (global.Buffer && global.Buffer.isBuffer(obj)) ||
-         (global.ArrayBuffer && obj instanceof ArrayBuffer);
+         (global.ArrayBuffer && obj instanceof ArrayBuffer) ||
+         (obj instanceof Uint8Array);
 }
