@@ -1,6 +1,6 @@
 {
   "name": "socket.io-p2p-parser",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "socket.io protocol parser with added p2p",
   "repository": {
     "type": "git",
