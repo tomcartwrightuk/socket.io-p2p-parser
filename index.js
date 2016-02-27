@@ -372,7 +372,7 @@ BinaryReconstructor.prototype.takeBinaryData = function(binData) {
   if (this.buffers.length == this.reconPack.attachments) { // done with buffer list
     this.reconPack.data['data'] = this.buffers.reduce(function(prev, curr, idx, arr) {
       return this._appendBuffer(prev, curr);
-    })
+    }.bind(this))
     binary.reconstructPacket(this.reconPack, [this.reconPack.data['data']]);
     var packet = this.reconPack
     this.finishedReconstruction();
